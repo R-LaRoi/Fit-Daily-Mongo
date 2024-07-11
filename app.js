@@ -4,11 +4,14 @@ const PORT = 3000;
 const dailyData = require("./data/dailyData");
 const fitUsers = require("./data/user");
 
+app.set("view engine", "pug");
 app.get("/", (req, res) => {
-  res.send("fit daily");
+  res.render("index", {
+    title: "Pug",
+  });
 });
 
-//  routines route
+//  routines routes
 app.get("/routines", (req, res) => {
   const routine = dailyData;
   res.json(routine);

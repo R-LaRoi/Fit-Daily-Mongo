@@ -1,0 +1,33 @@
+html(lang ='en')
+    head 
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      meta(http-equiv='X-UA-Compatible' content='ie=edge')
+      title Pug
+    body(style="text-align: center")    
+   
+       nav 
+            span 
+            a(href="secondpg") 
+            span 
+            a(href="/") Home
+
+
+div.text-center
+        form(class="form-signin" method="GET" action="/secondpg")
+            #error
+                if error
+                    p Error!
+
+            h3 Create An Account
+            label(for="email" ) Email:
+            br
+            input(type="email" name="username" id="email-id" placeholder="Email address" required autofocus autocomplete)
+            br
+            br
+            label(for="password") Password: 
+            br
+            input(type="password" name="password" id="password-id"  placeholder="*****" required autocomplete)
+            br
+            button(type="submit") Sign in
+
