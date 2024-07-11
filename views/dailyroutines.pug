@@ -1,0 +1,49 @@
+html(lang ='en')
+    head 
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      meta(http-equiv='X-UA-Compatible' content='ie=edge')
+      title Pug
+    body(style="text-align: center")  
+
+        nav 
+            span 
+            a(href="dailyroutines") 
+            span 
+            a(href="/") Logout
+  
+        -
+          const routines = [
+            {
+              id: 0o1,
+              day: "date",
+              duration: "50 min",
+              routine: ["jump rope", "kb swings", "mountain climbers"],
+            },
+            {
+              id: 0o2,
+              day: "date",
+              duration: "50 min",
+              routine: ["jump rope", "burpees", "side climbers"],
+            },
+            {
+              id: 0o3,
+              day: "date",
+              duration: "50 min",
+              routine: ["jump rope", "devil press", "high knees"],
+            },
+          ];
+   
+        
+        div
+         h1 fit daily routines
+         a(href="/addroutine") Today
+         div
+          each items in routines
+                //- img(src=items.imgSrc alt='grid image')
+                figcaption
+                  h1 Fit Daily
+                  small #{items.type}
+                  h2 #{items.type} 
+                  h3 #{items.duration}
+                  p #{items.routine}

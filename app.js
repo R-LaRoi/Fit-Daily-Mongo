@@ -11,6 +11,14 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/dailyroutines", function (req, res) {
+  res.render("dailyroutines", dailyData);
+});
+
+app.get("/addroutine", function (req, res) {
+  res.render("addroutine");
+});
+
 //  routines routes
 app.get("/routines", (req, res) => {
   const routine = dailyData;

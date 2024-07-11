@@ -8,13 +8,13 @@ html(lang ='en')
    
        nav 
             span 
-            a(href="secondpg") 
+            a(href="dailyroutines") 
             span 
             a(href="/") Home
 
 
 div.text-center
-        form(class="form-signin" method="GET" action="/secondpg")
+        form(class="form-signin" method="GET" action="/dailyroutines")
             #error
                 if error
                     p Error!
@@ -29,5 +29,5 @@ div.text-center
             br
             input(type="password" name="password" id="password-id"  placeholder="*****" required autocomplete)
             br
-            button(type="submit") Sign in
+            button(type="submit" action="/addroutine") Sign in
 
