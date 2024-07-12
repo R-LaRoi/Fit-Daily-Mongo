@@ -5,45 +5,51 @@ html(lang ='en')
       meta(http-equiv='X-UA-Compatible' content='ie=edge')
       title Pug
     body(style="text-align: center")  
-
+        -
+          const routines = [
+            {
+              id: "0o1",
+              date: "date",
+              duration: "50 min",
+              routine: ["jump rope", "kb swings", "mountain climbers"],
+            },
+            {
+              id: "0o2",
+              date: "date",
+              duration: "50 min",
+              routine: ["jump rope", "burpees", "side climbers"],
+            },
+            {
+              id: "0o3",
+              date: "date",
+              duration: "50 min",
+              routine: ["jump rope", "devil press", "high knees"],
+            },
+          ];
+   
         nav 
             span 
             a(href="dailyroutines") 
             span 
             a(href="/") Logout
   
-        -
-          const routines = [
-            {
-              id: 0o1,
-              day: "date",
-              duration: "50 min",
-              routine: ["jump rope", "kb swings", "mountain climbers"],
-            },
-            {
-              id: 0o2,
-              day: "date",
-              duration: "50 min",
-              routine: ["jump rope", "burpees", "side climbers"],
-            },
-            {
-              id: 0o3,
-              day: "date",
-              duration: "50 min",
-              routine: ["jump rope", "devil press", "high knees"],
-            },
-          ];
-   
+    
         
         div
-         h1 fit daily routines
-         a(href="/addroutine") Today
-         div
-          each items in routines
-                //- img(src=items.imgSrc alt='grid image')
-                figcaption
-                  h1 Fit Daily
-                  small #{items.type}
-                  h2 #{items.type} 
-                  h3 #{items.duration}
-                  p #{items.routine}
+        h1 fit daily routines
+        a(href="/addroutine") Today
+        div
+        small #{date}
+        h2 #{type} 
+        h3 #{duration}
+        div #{routine}
+
+        div
+        each items in routines
+          h1 Fit Daily
+          small #{items.date}
+          h2 #{items.type} 
+          h3 #{items.duration}
+          div #{items.routine}
+                
+          
