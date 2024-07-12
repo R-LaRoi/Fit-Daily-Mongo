@@ -4,11 +4,12 @@ const PORT = 3000;
 
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const dailyDataFile = "./data/dailyData";
-const dailyRoutines = require(dailyDataFile);
 
 const dailyData = require("./data/dailyData");
 const fitUsers = require("./data/user");
+
+const { nanoid } = require("nanoid");
+const idNumber = nanoid(5);
 
 app.set("view engine", "pug");
 app.get("/", (req, res) => {
@@ -26,8 +27,6 @@ app.get("/dailyroutines", function (req, res) {
 app.get("/addroutine", function (req, res) {
   res.render("addroutine");
 });
-
-//  maka method to delete a routine....
 
 //  routines JSON data route
 app.get("/routines", (req, res) => {
@@ -49,14 +48,13 @@ app.post("/submitRoutine", (req, res) => {
   );
 
   const formData = req.body;
-  // console.log(routineData);
-  // const routineData = JSON.stringify(formData);
-  //  need to add this routine data to daily data ....
+
   let userRoutine = {
+    id: idNumber,
     date: formData.date,
     type: formData.type,
     duration: formData.duration,
-    routine: formData.message,
+    routine: formData.routine,
   };
 
   data = [...data, userRoutine];
@@ -65,7 +63,7 @@ app.post("/submitRoutine", (req, res) => {
     `${__dirname}/data/dailyData.json`,
     JSON.stringify(data),
     (err) => {
-      console.log("Something went wrong Mr. ES6-2015, get it right!");
+      console.log("Something went wrong!");
     }
   );
 
@@ -80,7 +78,29 @@ app.post("/submitRoutine", (req, res) => {
     `);
 });
 
-// add a delete path on daily routines
+// add a delete path for deleting routines
+app.delete("/data/dailyroutines/delete/:id", (req, res) => {
+  const routineId = parseInt(req.params.id);
+  let data = JSON.parse(
+    fs.readFileSync(`${__dirname}/data/dailyData.json`, "utf-8")
+  );
+
+  const findRoutine = data.find((delRoutine) => delRoutine.id === routineId);
+  if (findRoutine) {
+    const routineItem = data.indexOf(findRoutine);
+    if (routineItem !== -1) {
+      data.splice(routineItem, 1);
+    }
+  }
+
+  fs.writeFile(
+    `${__dirname}/data/dailyData.json`,
+    JSON.stringify(data),
+    (err) => {
+      console.log("Error writing file!");
+    }
+  );
+});
 
 //  middleware
 app.use((err, req, res, next) => {
