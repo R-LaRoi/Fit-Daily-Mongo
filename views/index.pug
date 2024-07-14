@@ -1,33 +1,25 @@
-html(lang ='en')
-    head 
-      meta(charset='UTF-8')
-      meta(name='viewport' content='width=device-width, initial-scale=1.0')
-      meta(http-equiv='X-UA-Compatible' content='ie=edge')
-      title Pug
-    body(style="text-align: center")    
-   
-       nav 
-            span 
-            a(href="dailyroutines") 
-            span 
-            a(href="/") Home
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible', content='ie=edge')
+  title Pug
+  link(rel='stylesheet', href='styles.css')
+video(src='https://github.com/user-attachments/assets/5ee2597d-b0cf-44e5-b103-a97a0f83b649', autoplay='autoplay', loop='loop', playsinline='playsinline', muted='muted')
 
-
-div.text-center
-        form(class="form-signin" method="GET" action="/dailyroutines")
-            #error
-                if error
-                    p Error!
-
-            h3 Create An Account
-            label(for="email" ) Email:
-            br
-            input(type="email" name="username" id="email-id" placeholder="Email address" required autofocus autocomplete)
-            br
-            br
-            label(for="password") Password: 
-            br
-            input(type="password" name="password" id="password-id"  placeholder="*****" required autocomplete)
-            br
-            button(type="submit" action="/addroutine") Sign in
-
+nav 
+        a.home-btn(href='/') MAIN
+.text-center.login
+  .col-two
+   h1 FIT DAILY
+   form.form-signin(method='GET', action='/dailyroutines')
+      #error
+      h3.title LOGIN
+      p Keep track of your fitness routine everyday. Stay fit for life!
+      
+      br
+      input#email-id(type='email', name='username', placeholder='Email address', required='required', autofocus='autofocus', autocomplete='autocomplete')
+    
+      br
+      input#password-id(type='password', name='password', placeholder='*****', required='required', autocomplete='autocomplete')
+      br
+      button( class ="sign-in-btn" type='submit', action='/addroutine') Sign in

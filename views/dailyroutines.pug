@@ -4,52 +4,69 @@ html(lang ='en')
       meta(name='viewport' content='width=device-width, initial-scale=1.0')
       meta(http-equiv='X-UA-Compatible' content='ie=edge')
       title Pug
-    body(style="text-align: center")  
+      link(rel='stylesheet', href='styles.css')
+      script(src='https://kit.fontawesome.com/3f93d2c0e4.js', crossorigin='anonymous')
+
+    body.routinebody
         -
           const routines = [
             {
               id: "0o1",
               date: "date",
+              type: "EMOM",
               duration: "50 min",
               routine: ["jump rope", "kb swings", "mountain climbers"],
             },
             {
               id: "0o2",
               date: "date",
+              type: "3/15s",
               duration: "50 min",
               routine: ["jump rope", "burpees", "side climbers"],
             },
             {
               id: "0o3",
               date: "date",
+              type: "HIIT",
               duration: "50 min",
               routine: ["jump rope", "devil press", "high knees"],
             },
           ];
    
         nav 
-            span 
-            a(href="dailyroutines") 
-            span 
-            a(href="/") Logout
+            span
+            .home-btn 
+            a(href="/").home-btn  Logout
   
     
         
-        div
-        h1 fit daily routines
-        a(href="/addroutine") Today
-        div
-        small #{date}
-        h2 #{type} 
-        h3 #{duration}
-        div #{routine}
-
-        div
-        each items in routines
-          h1 Fit Daily
-          small #{items.date}
-          h2 #{items.type} 
-          h3 #{items.duration}
-          div #{items.routine}
-                
+        div.add-title
+            h1 fit daily routines
+            h2 Consistency is key!
+            h4 What did you do today?
+            br
+            a(href="/addroutine").sign-in-btn ADD YOUR ROUTINE
+        br
+        .container
+                .today
+                      ul 
+                      li Fit Daily
+                      li #{showRoutines.date}
+                      li #{showRoutines.type} 
+                      li #{showRoutines.duration}
+                      li #{showRoutines.routine}
+                      a(class='btn-delete', id=showRoutines.id, data-method="delete", href=`/data/dailyroutines/delete/${showRoutines.id}`) 
+                      div.i.fa-solid.fa-circle-minus     
+        
+                each items in routines
+                  .list
+                          ul 
+                          li Fit Daily
+                          li #{items.date}
+                          li #{items.type} 
+                          li #{items.duration}
+                          li #{items.routine}
+                          br
+                          div.i.fa-solid.fa-circle-minus
+      
           

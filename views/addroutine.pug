@@ -4,24 +4,25 @@ html(lang ='en')
       meta(name='viewport' content='width=device-width, initial-scale=1.0')
       meta(http-equiv='X-UA-Compatible' content='ie=edge')
       title Pug
-
-    body(style="text-align: center")   
-            h1 YOU ARE FIT!
-            form(action="/submitRoutine", method="post")
-              label(for="date") Date:
-              br
-              input(type="date", id="date", name="date", required)
-              br
-              label(for="type") type:
-              br
-              input(type="text", id="type", name="type", required)
-              br
-              label(for="duration") duration:
-              br
-              input(type="duration", id="duration", name="duration", required)
-              br
-              label(for="message") routine:
-              br
-              textarea(id="routine", name="routine", rows="4", required)
-              br
-              button(type="submit" ) Submit
+      link(rel='stylesheet', href='styles.css')
+    body.addbody  
+            div.col-two
+                    h1 YOU ARE FIT!
+                    form(action="/submitRoutine", method="post")
+                      label(for="date") Date:
+                      br
+                      input(type="date", id="date", name="date", required)
+                      br
+                      label(for="type") type:
+                      br
+                      input(type="text", id="type", name="type", required)
+                      br
+                      label(for="duration") duration:
+                      br
+                      input(type="duration", id="duration", name="duration", required)
+                      br
+                      label(for="routine") routine:
+                      br
+                      textarea(id="routine", name="routine", rows="4", required)
+                      br
+                      button(type="submit" class="sign-in-btn") Submit

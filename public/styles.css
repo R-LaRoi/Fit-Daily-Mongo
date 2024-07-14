@@ -1,0 +1,156 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.viewport-video {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "Syncopate", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1vw;
+  line-height: 1.2;
+  font-size: 3vw;
+  text-align: center;
+  span {
+    display: block;
+    font-size: 10vw;
+    /* letter-spacing: 1.3vw; */
+  }
+}
+
+.home-btn {
+  padding: 15px;
+  text-decoration: none;
+  border-radius: 15px;
+  color: #f6f9fa;
+  position: relative;
+  z-index: 999;
+  font-family: arial;
+}
+
+.login {
+  background: rgba(6, 5, 7, 0.769);
+
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.col-two {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(18, 18, 20, 0.94);
+  width: 50%;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5%;
+  border-radius: 20px;
+}
+input,
+textarea {
+  padding: 10px;
+  background-color: none;
+  width: 55%;
+  border: 1px solid #858585;
+  border-radius: 15px;
+  background-color: transparent;
+  margin-bottom: 10px;
+  color: #f6f9fa;
+}
+
+.today-btn {
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgb(255, 229, 80);
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-family: arial;
+}
+
+.add-title {
+  color: white;
+  text-align: center;
+  line-height: 0.5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sign-in-btn {
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgb(255, 229, 80);
+  width: 45%;
+  border: 1px solid #858585;
+}
+.sign-in-btn:hover {
+  background-color: rgb(10, 10, 10);
+  color: aliceblue;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.today,
+.list {
+  border-radius: 15px;
+  text-align: center;
+  list-style: none;
+  padding: 1rem;
+  background: rgba(18, 18, 20, 0.972);
+  color: whitesmoke;
+  width: 400px;
+}
+
+.routinebody {
+  background: url(./8.png) no-repeat center center fixed;
+  background-size: cover;
+  /* height: 100%; */
+  overflow: hidden;
+}
+
+.addbody {
+  background: url(./mv.png) no-repeat center center fixed;
+  background-size: cover;
+
+  overflow: hidden;
+}
+
+.icon {
+  color: white;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

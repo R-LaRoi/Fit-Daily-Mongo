@@ -1,16 +1,17 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
-
 const bodyParser = require("body-parser");
 const fs = require("fs");
-
-const dailyData = require("./data/dailyData");
+const path = require("path");
+const dailyData = require("./data/dailyData.json");
 const fitUsers = require("./data/user");
-
 const { nanoid } = require("nanoid");
 const idNumber = nanoid(5);
 
+app.use(express.static(path.join(__dirname, "public")));
+
+//  PUG
 app.set("view engine", "pug");
 app.get("/", (req, res) => {
   res.render("index", {
@@ -18,30 +19,43 @@ app.get("/", (req, res) => {
   });
 });
 
-// shows users previous routine history
+// GET - users previous routine history
 app.get("/dailyroutines", function (req, res) {
-  res.render("dailyroutines", dailyData);
+  let showRoutines = {};
+
+  dailyData.forEach((item, index, array) => {
+    showRoutines = {
+      date: item.date,
+      duration: item.duration,
+      type: item.type,
+      routine: item.routine,
+    };
+  });
+
+  res.render("dailyroutines", { showRoutines });
 });
 
-//form - to add a routine
+// GET -  form to add a routine
 app.get("/addroutine", function (req, res) {
   res.render("addroutine");
 });
 
-//  routines JSON data route
+//  GET -  JSON data for routines
 app.get("/routines", (req, res) => {
   const routine = dailyData;
   res.json(routine);
 });
 
-//  users JSON data route
+// GET - users JSON data for users
 app.get("/user", (req, res) => {
   res.json(fitUsers);
 });
 
+// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// POST
 app.post("/submitRoutine", (req, res) => {
   let data = JSON.parse(
     fs.readFileSync(`${__dirname}/data/dailyData.json`, "utf-8")
@@ -67,19 +81,54 @@ app.post("/submitRoutine", (req, res) => {
     }
   );
 
-  res.send(`<main style="text-align: center><h1 style="text-align: center; 
-    margin-top: 50vh; transform: translateY(-50%);">
-    FIT FOR LIFE!</h1>
+  res.send(`<body style="background-color: #242424">
+  <main style="background-color: #242424; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; padding: 20px; width:600px">
+  <div style="display:"flex"; flex-direction: column">
+  <h1>FIT FOR LIFE!</h1>
+    <p>Your routine has beed added!</p>
     <div>${formData.date}<div>
         <div>${formData.type}<div>
             <div>${formData.duration}<div>
-                <div>${formData.routine}<div>
-    <a href="dailyroutines">routines</a></main>
+                <div>${formData.routine}<div
+           <div>
+           <br><br>
+    <a style=" text-decoration: none; background: transparent; border: 1px solid white; border-radius:10px; padding:5px; color:white;" href="dailyroutines">View Routines</a></div></main>
+    </body>
     `);
 });
 
-// add a delete path for deleting routines
-app.delete("/data/dailyroutines/delete/:id", (req, res) => {
+// PUT
+app.put("/submitRoutine/:id", (req, res) => {
+  const routineId = parseInt(req.params.id);
+  let data = JSON.parse(
+    fs.readFileSync(`${__dirname}/data/dailyData.json`, "utf-8")
+  );
+
+  const updateRoutine = data.find((getRoutine) => getRoutine.id === routineId);
+  if (updateRoutine === routineId) {
+    const routineItem = data.indexOf(updateRoutine);
+    if (routineItem) {
+      return Object.assign({}, routineItem, {
+        type: "EMOM",
+        duration: "75 minutes",
+        routine: "planks",
+      });
+    } else {
+      res.status(404).send("Routine not found");
+    }
+  }
+  fs.writeFile(
+    `${__dirname}/data/dailyData.json`,
+    JSON.stringify(data),
+    (err) => {
+      console.log("Something went wrong!");
+    }
+  );
+  res.send("Your routine was updated!");
+});
+
+// DELETE
+app.delete("dailyroutines/delete/:id", (req, res) => {
   const routineId = parseInt(req.params.id);
   let data = JSON.parse(
     fs.readFileSync(`${__dirname}/data/dailyData.json`, "utf-8")
@@ -90,6 +139,8 @@ app.delete("/data/dailyroutines/delete/:id", (req, res) => {
     const routineItem = data.indexOf(findRoutine);
     if (routineItem !== -1) {
       data.splice(routineItem, 1);
+    } else {
+      res.status(404).send("Routine not found");
     }
   }
 
@@ -97,12 +148,16 @@ app.delete("/data/dailyroutines/delete/:id", (req, res) => {
     `${__dirname}/data/dailyData.json`,
     JSON.stringify(data),
     (err) => {
-      console.log("Error writing file!");
+      if (err) {
+        console.error("Something went wrong", err);
+        return res.status(500).send("Error deleting routine");
+      }
+      res.send("Routine Deleted");
     }
   );
 });
 
-//  middleware
+//  Middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Unavailable");
