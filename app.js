@@ -8,6 +8,7 @@ const dailyData = require("./data/dailyData.json");
 const fitUsers = require("./data/user");
 const { nanoid } = require("nanoid");
 const idNumber = nanoid(5);
+const { middleErrors } = require("./middleware/middleware");
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 app.get("/", (req, res) => {
   res.render("index", {
-    title: "Pug",
+    title: "Fit Daily",
   });
 });
 
@@ -46,7 +47,7 @@ app.get("/routines", (req, res) => {
   res.json(routine);
 });
 
-// GET - users JSON data for users
+// GET -  JSON data for users
 app.get("/user", (req, res) => {
   res.json(fitUsers);
 });
@@ -55,7 +56,7 @@ app.get("/user", (req, res) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// POST
+// POST create new routine
 app.post("/submitRoutine", (req, res) => {
   let data = JSON.parse(
     fs.readFileSync(`${__dirname}/data/dailyData.json`, "utf-8")
@@ -97,9 +98,9 @@ app.post("/submitRoutine", (req, res) => {
     `);
 });
 
-// PUT
+// PUT  update routine by id
 app.put("/submitRoutine/:id", (req, res) => {
-  const routineId = parseInt(req.params.id);
+  const routineId = req.params.id;
   let data = JSON.parse(
     fs.readFileSync(`${__dirname}/data/dailyData.json`, "utf-8")
   );
@@ -127,9 +128,10 @@ app.put("/submitRoutine/:id", (req, res) => {
   res.send("Your routine was updated!");
 });
 
-// DELETE
-app.delete("dailyroutines/delete/:id", (req, res) => {
-  const routineId = parseInt(req.params.id);
+// DELETE routine by id
+app.delete("/deleteRoutine/:id", (req, res) => {
+  const routineId = req.params.id;
+
   let data = JSON.parse(
     fs.readFileSync(`${__dirname}/data/dailyData.json`, "utf-8")
   );
@@ -140,7 +142,7 @@ app.delete("dailyroutines/delete/:id", (req, res) => {
     if (routineItem !== -1) {
       data.splice(routineItem, 1);
     } else {
-      res.status(404).send("Routine not found");
+      res.status(404).json({ error: "Routine not found" });
     }
   }
 
@@ -157,11 +159,8 @@ app.delete("dailyroutines/delete/:id", (req, res) => {
   );
 });
 
-//  Middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Unavailable");
-});
+// Middleware - error
+app.use(middleErrors);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

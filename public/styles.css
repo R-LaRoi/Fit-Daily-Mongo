@@ -30,11 +30,6 @@ h1 {
   line-height: 1.2;
   font-size: 3vw;
   text-align: center;
-  span {
-    display: block;
-    font-size: 10vw;
-    /* letter-spacing: 1.3vw; */
-  }
 }
 
 .home-btn {
@@ -49,7 +44,6 @@ h1 {
 
 .login {
   background: rgba(6, 5, 7, 0.769);
-
   height: 100%;
   width: 100%;
   z-index: 20;
@@ -64,7 +58,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(18, 18, 20, 0.94);
-  width: 50%;
+  width: 55%;
   text-align: center;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
