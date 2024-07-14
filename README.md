@@ -44,6 +44,13 @@ Fit Daily is a web application built with Express.js that helps users track thei
 - CSS 
 - Font Awesome 
 
+## Screenshots
+
+![App Screenshot](https://github.com/user-attachments/assets/89eb5934-6fa5-42d3-9233-9ac494bacd9c)
+
+![App Screenshot](https://github.com/user-attachments/assets/45850def-5122-4549-a6ea-ad812f3336ec)
+
+![App Screenshot](https://github.com/user-attachments/assets/2b07d253-6f04-4594-8608-d61a98e15d16)
 
 
 ## Run Locally
@@ -74,3 +81,6 @@ Start the server
 Open browser
 ```bash
  http://localhost:3000
+
+
+
