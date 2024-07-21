@@ -4,15 +4,14 @@ Fit Daily is a web application built with Express.js that helps users track thei
 
 ### Objectives
 
-- Create routes for all data that should be visible to the client.
-
-  `GET /routines`
+- Create routes for all routines JSON data that should be visible to the client.
+  `GET /daily_routines`
 
 - Create route for client data creation.
-  `POST /submitRoutine`
+  `POST /submitroutine`
 - Create route for data manipulation via `PUT` request.
 
-  `PUT /submitRoutine/:id`
+  `PUT /updateRoutine/:id`
 
 - Create `DELETE` routes for data category to allow for client deletion via a request.
 
