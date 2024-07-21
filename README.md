@@ -1,4 +1,4 @@
-# Fit Daily |
+# Fit Daily | MongoDB
 
 Fit Daily is a web application built with Express.js that helps users track their daily fitness activities. It contains a RESTful API for handling data operations, and a user interface using PUG view engine. Data storage using MongoDB. Users can interact with the application through a web browser to create, view and manage fitness routine history.
 
