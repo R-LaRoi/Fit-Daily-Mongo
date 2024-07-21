@@ -9,32 +9,7 @@ html(lang ='en')
 
     body.routinebody
         -
-          const routines = [
-            {
-              id: "0o1",
-              date: "2024-07-12",
-              type: "EMOM",
-              duration: "50 min",
-              routine: ["jump rope", "kb swings", "mountain climbers"],
-            },
-            {
-              id: "0o2",
-              date: "2024-07-13",
-              type: "3/15s",
-              duration: "50 min",
-              routine: ["jump rope", "burpees", "side climbers"],
-            },
-            {
-              id: "0o3",
-              date: "2024-07-11",
-              type: "HIIT",
-              duration: "50 min",
-              routine: ["jump rope", "devil press", "high knees"],
-            },
-          ];
-        
-
-
+      
         nav 
             span
             .home-btn 
@@ -51,23 +26,14 @@ html(lang ='en')
         br
               
         .container
-                .today
-                      ul 
-                      li Fit Daily
-                      li #{showRoutines.date}
-                      li #{showRoutines.type} 
-                      li #{showRoutines.duration}
-                      li #{showRoutines.routine}
-                      a(class='btn-delete', id=showRoutines.id, data-method="delete", href=`/deleteRoutine/${showRoutines.id}`).i.fa-solid.fa-circle-minus  
-          
-                each items in routines
+                each item in routines
                   .list
                           ul 
                           li Fit Daily
-                          li #{items.date}
-                          li #{items.type} 
-                          li #{items.duration}
-                          li #{items.routine}
+                          li #{item.date}
+                          li #{item.type} 
+                          li #{item.duration}
+                          li #{item.routine}
                           br
                           div.i.fa-solid.fa-circle-minus
       
