@@ -53,13 +53,13 @@ Fit Daily is a web application built with Express.js that helps users track thei
 Clone the project
 
 ```bash
-  git clone https://github.com/R-LaRoi/fit-daily-sba
+  git clone https://github.com/R-LaRoi/Fit-Daily-Mongo
 ```
 
 Go to the project directory
 
 ```bash
-  cd fit-daily-sba
+  cd fit-daily-mongo
 ```
 
 Install dependencies
