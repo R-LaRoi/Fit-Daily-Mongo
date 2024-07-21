@@ -1,6 +1,6 @@
-# Fit Daily | SBA.v5
+# Fit Daily |
 
-Fit Daily is a web application built with Express.js that helps users track their daily fitness activities. It contains a RESTful API for handling data operations, and a user interface using PUG view engine. Users can interact with the application through a web browser to create, view and manage fitness routine history.
+Fit Daily is a web application built with Express.js that helps users track their daily fitness activities. It contains a RESTful API for handling data operations, and a user interface using PUG view engine. Data storage using MongoDB. Users can interact with the application through a web browser to create, view and manage fitness routine history.
 
 ### Objectives
 
@@ -37,7 +37,7 @@ Fit Daily is a web application built with Express.js that helps users track thei
 - Node.js
 - Express.js
 - Pug: Template view engine
-- NanoId: Node package to generate custom ids
+- Mongo DB
 - CSS
 - Font Awesome
 
