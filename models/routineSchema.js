@@ -7,6 +7,6 @@ const routineSchema = new mongoose.Schema({
   routine: { type: String, required: true },
 });
 
-const Routine = mongoose.model("daily_routine", routineSchema);
+const routineModel = mongoose.model("daily_routines", routineSchema);
 
-module.exports = Routine;
+module.exports = routineModel;

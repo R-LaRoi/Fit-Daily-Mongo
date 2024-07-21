@@ -1,48 +1,45 @@
+# Fit Daily | SBA.v5
 
-# Fit Daily | SBA.v5 
-
-Fit Daily is a web application built with Express.js that helps users track their daily fitness activities. It contains a RESTful API for handling data operations, and a user interface using PUG view engine. Users can interact with the application through a web browser to create, view and manage fitness routine history. 
-
+Fit Daily is a web application built with Express.js that helps users track their daily fitness activities. It contains a RESTful API for handling data operations, and a user interface using PUG view engine. Users can interact with the application through a web browser to create, view and manage fitness routine history.
 
 ### Objectives
 
-- Create  routes for all data that should be visible to the client. 
+- Create routes for all data that should be visible to the client.
 
-    `GET /routines`
-- Create route for client data creation. 
-    
-    `POST /submitRoutine` 
+  `GET /routines`
+
+- Create route for client data creation.
+  `POST /submitRoutine`
 - Create route for data manipulation via `PUT` request.
 
-    `PUT /submitRoutine/:id`
+  `PUT /submitRoutine/:id`
+
 - Create `DELETE` routes for data category to allow for client deletion via a request.
 
-    `DELETE /deleteRoutine/:id`
+  `DELETE /deleteRoutine/:id`
 
-- Include a form within a rendered view that allows for interaction with your RESTful API. 
+- Include a form within a rendered view that allows for interaction with your RESTful API.
 
-    `GET /addroutine`
+  `GET /addroutine`
 
 - Create and use error-handling middleware.
- 
-
 
 ### Features
+
 - User login page
-- Create a new routine, client can intereact with a form and select date, type, duration and activity.  
+- Create a new routine, client can intereact with a form and select date, type, duration and activity.
 - View user routine history data.
 - Modify an existing routine.
-- Delete an exisiting routine. 
+- Delete an exisiting routine.
 
+### Technologies Used
 
-
-### Technologies Used 
-- Node.js 
-- Express.js 
+- Node.js
+- Express.js
 - Pug: Template view engine
 - NanoId: Node package to generate custom ids
-- CSS 
-- Font Awesome 
+- CSS
+- Font Awesome
 
 ## Screenshots
 
@@ -51,7 +48,6 @@ Fit Daily is a web application built with Express.js that helps users track thei
 ![App Screenshot](https://github.com/user-attachments/assets/45850def-5122-4549-a6ea-ad812f3336ec)
 
 ![App Screenshot](https://github.com/user-attachments/assets/83538fba-aaf6-409c-8a2e-f16715f9f779)
-
 
 ## Run Locally
 
@@ -78,9 +74,12 @@ Start the server
 ```bash
   npm run start
 ```
+
 Open browser
+
 ```bash
  http://localhost:3000
 
 
 
+```
