@@ -1,1 +1,1 @@
-DELETE http://localhost:3000/deleteroutine/669d481483050df1168c2499
+ GET http://localhost:3000/users
